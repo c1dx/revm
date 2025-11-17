@@ -36,7 +36,7 @@ serde_json = { workspace = true, features = ["alloc", "preserve_order"] }
 serde = { workspace = true, features = ["derive"] }
 
 [features]
-default = ["std", "secp256k1", "portable", "tracer", "c-kzg", "blst"]
+default = ["std", "secp256k1", "portable", "tracer", "blst"]
 std = [
 	"interpreter/std",
 	"precompile/std",
@@ -103,7 +103,6 @@ optional_priority_fee_check = ["context/optional_priority_fee_check"]
 # Precompiles features: Please look at the comments in `precompile` crate for more information.
 
 secp256k1 = ["precompile/secp256k1"] # See comments in `precompile` use it with caution
-c-kzg = ["precompile/c-kzg"]
 
 # blst will be enabled both for bls precompiles and for kzg precompile.
 blst = ["precompile/blst"]

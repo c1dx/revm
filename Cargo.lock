@@ -3697,7 +3697,6 @@ dependencies = [
  "arrayref",
  "aurora-engine-modexp",
  "blst",
- "c-kzg",
  "cfg-if",
  "codspeed-criterion-compat",
  "k256",

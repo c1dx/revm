@@ -48,10 +48,6 @@ ark-ec = { workspace = true }
 ark-ff = { workspace = true, features = ["asm"] }
 ark-serialize = { workspace = true }
 
-# KZG point evaluation precompile
-c-kzg = { workspace = true, optional = true, features = [
-	"ethereum_kzg_settings",
-] }
 
 
 # Use the BLS12-381 implementation of blst for EIP2537
@@ -74,13 +70,12 @@ ark-std = { workspace = true }
 rstest.workspace = true
 
 [features]
-default = ["std", "secp256k1", "blst", "c-kzg", "portable"]
+default = ["std", "secp256k1", "blst", "portable"]
 std = [
 	"primitives/std",
 	"k256/std",
 	"ripemd/std",
 	"sha2/std",
-	"c-kzg?/std",
 	"secp256k1?/std",
 	"ark-bn254/std",
 	"ark-bls12-381/std",
@@ -98,12 +93,11 @@ asm-sha2 = ["sha2/asm"]
 
 
 # Enables the c-kzg point evaluation precompile. Enabled by default as most stable/used implementation.
-c-kzg = ["dep:c-kzg"]
+
 
 # Compile in portable mode, without ISA extensions.
 # Binary can be executed on all systems.
-portable = ["c-kzg?/portable", "blst?/portable"]
-
+portable = ["blst?/portable"]
 # Use `secp256k1` as a faster alternative to `k256`.
 # The problem that `secp256k1` has is it fails to build for `wasm` target on Windows and Mac as it is c lib.
 # In Linux it passes. If you don't require to build wasm on win/mac, it is safe to use it and it is enabled by default.
